@@ -1,0 +1,16 @@
+name: Rspec CI
+on: [pull_request, push]
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    name: RSpec tests
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.5
+          bundler-cache: true
+      - name: Run RSpec
+        run: bundle exec rspec
